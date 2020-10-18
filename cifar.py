@@ -201,8 +201,8 @@ def main():
         optimizer = optim.Adam(model.parameters(), lr=args.lr,
                                betas=(args.beta1, args.beta2), eps=1e-08, weight_decay=args.weight_decay,
                                amsgrad=False)
-    elif args.optimizer == 'amsgrad':
-        optimizer = optim.Adam(model.parameters(), lr=args.lr,
+    elif args.optimizer == 'rmsprop':
+        optimizer = optim.RMSprop(model.parameters(), lr=args.lr,
                                betas=(args.beta1, args.beta2), eps=1e-08, weight_decay=args.weight_decay,
                                amsgrad=True)
     elif args.optimizer == 'adagrad':
