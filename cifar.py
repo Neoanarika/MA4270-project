@@ -89,6 +89,7 @@ parser.add_argument('--manualSeed', type=int, default=0, help='manual seed')
 parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',
                     help='evaluate model on validation set')
 parser.add_argument('--update-period', type=int, default=4)
+parser.add_argument('--device', type=int, default=2)
 
 args = parser.parse_args()
 state = {k: v for k, v in args._get_kwargs()}
@@ -98,8 +99,8 @@ assert args.dataset == 'cifar10' or args.dataset == 'cifar100', 'Dataset can onl
 
 # Use CUDA
 use_cuda = torch.cuda.is_available()
-device = torch.device("cuda:2")
-CUDA_VISIBLE_DEVICES=2
+device = torch.device(f"cuda:{args.device}")
+CUDA_VISIBLE_DEVICES= args.device
 
 # Random seed
 random.seed(args.manualSeed)
@@ -322,7 +323,7 @@ def test(testloader, model, criterion, writer, epoch, use_cuda, norm_order=2):
         data_time.update(time.time() - end)
 
         if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
+            inputs, targets = inputs.cuda(device), targets.cuda(device)
 
         # compute output
         outputs = model(inputs)
