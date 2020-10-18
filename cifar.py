@@ -275,7 +275,7 @@ def train(trainloader, model, criterion, optimizer, writer, epoch, use_cuda, nor
 
         loss.backward()
         optimizer.step()
-
+        
         # measure accuracy and record loss
         prec1 = accuracy(outputs.data, targets.data, topk=(1,))[0]
         losses.update(loss.detach().item(), inputs.size(0))
