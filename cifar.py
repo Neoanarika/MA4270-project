@@ -98,6 +98,7 @@ assert args.dataset == 'cifar10' or args.dataset == 'cifar100', 'Dataset can onl
 
 # Use CUDA
 use_cuda = torch.cuda.is_available()
+device = torch.device("cuda:2")
 CUDA_VISIBLE_DEVICES=2
 
 # Random seed
@@ -181,6 +182,8 @@ def main():
     else:
         model = models.__dict__[args.arch](num_classes=num_classes)
 
+    if use_cuda:
+        model = model.to(device)
     #model = torch.nn.DataParallel(model).cuda()
     cudnn.benchmark = True
     print('    Total params: %.2fM' % (sum(p.numel()
