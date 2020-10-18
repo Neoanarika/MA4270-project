@@ -271,7 +271,7 @@ def train(trainloader, model, criterion, optimizer, writer, epoch, use_cuda, nor
         data_time.update(time.time() - end)
 
         if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
+            inputs, targets = inputs.cuda(device), targets.cuda(device)
 
         # compute output
         outputs = model(inputs)
