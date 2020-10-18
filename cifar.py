@@ -8,6 +8,7 @@ import os
 import shutil
 import time
 import random
+from tqdm import tqdm 
 
 import torch
 import torch.nn as nn
@@ -18,8 +19,8 @@ import torch.utils.data as data
 from torch.utils.tensorboard import SummaryWriter
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
-import models.cifar as models
 import torch.optim.lr_scheduler as lr_scheduler
+import models.cifar as models
 from ngd import NGD
 
 model_names = sorted(name for name in models.__dict__
@@ -97,6 +98,7 @@ assert args.dataset == 'cifar10' or args.dataset == 'cifar100', 'Dataset can onl
 
 # Use CUDA
 use_cuda = torch.cuda.is_available()
+CUDA_VISIBLE_DEVICES=2
 
 # Random seed
 random.seed(args.manualSeed)
