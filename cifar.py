@@ -202,9 +202,7 @@ def main():
                                betas=(args.beta1, args.beta2), eps=1e-08, weight_decay=args.weight_decay,
                                amsgrad=False)
     elif args.optimizer == 'rmsprop':
-        optimizer = optim.RMSprop(model.parameters(), lr=args.lr,
-                               betas=(args.beta1, args.beta2), eps=1e-08, weight_decay=args.weight_decay,
-                               amsgrad=True)
+        optimizer = optim.RMSprop(model.parameters(), lr=args.lr, eps=1e-08, weight_decay=args.weight_decay)
     elif args.optimizer == 'adagrad':
         optimizer = optim.Adagrad(model.parameters(), lr=args.lr, lr_decay=0, weight_decay=args.weight_decay,
                                   initial_accumulator_value=0)
