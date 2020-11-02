@@ -19,3 +19,8 @@ python ./cifar.py \
        --gamma 0.1 \
        --wd 1e-4
 ```
+
+## How To Run Tensorboard 
+```
+tensorboard --logdir exp/cifar/exp2
+```
