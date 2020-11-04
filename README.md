@@ -1,6 +1,6 @@
 # MA4270 Project 
 
-The code is based on the OnlineNaturalGradient object in Kaldi src/nnet3/natural-gradient-online.h [12]and the github repohttps://github.com/YiwenShaoStephen/NGD-SGD. The main changes that were madewere to allow the program to run on a machine with multiple GTX 2080 Ti for efficient parallel training.
+The code is based on the OnlineNaturalGradient object in Kaldi src/nnet3/natural-gradient-online.h and the github repohttps://github.com/YiwenShaoStephen/NGD-SGD. The main changes that were madewere to allow the program to run on a machine with multiple GTX 2080 Ti for efficient parallel training.
 
 ## Notable Files
 1. normal.ipynb : generates the pair of normal distributions
